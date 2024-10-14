@@ -15,5 +15,28 @@ public boolean endOther(String a, String b) {
     return true;
   }
   return false;
-}
+}  
+
+String-2 > xyzThere
+public boolean xyzThere(String str) {
+  if(str.length()<4){
+    return str.equals("xyz");
+    }
+  for(int i=0; i<str.length()-2; i++){
+    if(str.substring(i, i+3).equals("xyz")){
+      if(i==0){
+        return true;
+      }
+      else {
+      if(!(str.substring(i-1,i).equals("."))){
+        return true;
+      } else {
+        continue;
+      }
+    }
+  }
+  }
+  return false;
+ }
+
 
