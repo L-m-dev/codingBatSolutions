@@ -40,3 +40,26 @@ public boolean xyzThere(String str) {
  }
 
 
+String-2 > bobThere
+
+ public boolean bobThere(String str) {
+ //Using while instead of for-loop
+  while(str.indexOf('b') >= 0 && str.length()>2){
+    int currentIndex = str.indexOf('b');
+    //if "b" is at the last or before-last index, should return false, else it goes Out of Bounds.    
+    if(str.length()-currentIndex <2){  
+      return false;
+    }   
+    if(str.substring(currentIndex+2, currentIndex+3).equals("b")){
+      return true;
+    } 
+    else {  
+    //Partitions input to remove the "b"s that have already been checked    
+      str = str.substring(currentIndex+1, str.length());  
+    }  
+  }  
+  return false;
+}  
+
+
+
