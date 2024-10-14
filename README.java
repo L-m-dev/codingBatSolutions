@@ -10,7 +10,7 @@ public boolean endOther(String a, String b) {
   int aL = a.length();     
   int bL = b.length();     
 // if a substring of A that starts in the middle or 0 and ends at the end equals B, return true.    
-// Math.max is used in case B.length is longer than A.length and it goes into the negatives        
+// Math.max is used in case B.length is longer than A.length. In that case the index goes into the negatives - should not happen        
 
   if(a.substring(Math.max(0, aL-bL), aL).equals(b)){   
     return true;   
