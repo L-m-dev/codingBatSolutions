@@ -92,4 +92,32 @@ public boolean xyBalance(String str) {
 }
 
 
+String-2 > mixString
+
+public String mixString(String a, String b) {
+  String result = "";
+  String biggerString = "a";
+  int minLength = Math.min(a.length(), b.length());
+  int maxLength = Math.max(a.length(), b.length());
+   
+ if(a.length()>b.length()){
+    biggerString = a;
+  } 
+  else{
+    biggerString = b;
+  }
+  
+  for(int i=0; i<maxLength;i++){
+    //if index has passed the point where it's adding letters intercalled from each string, add the rest of the longer string.
+    if(i>=minLength){
+      result+=biggerString.substring(i, biggerString.length());
+      break;
+    } else{
+      result+= a.substring(i, i+1);
+      result+= b.substring(i, i+1);
+    }
+  }
+  return result;
+}
+
 
