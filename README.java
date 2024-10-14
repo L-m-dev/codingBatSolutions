@@ -1,15 +1,17 @@
 # codingBatSolutions
 
-String-2 > endOther
-public boolean endOther(String a, String b) {
+String-2 > endOther  
+public boolean endOther(String a, String b) {  
 //normalize   
-  a = a.toLowerCase();
-  b = b.toLowerCase();
-// storing length as aL for ease    
-  int aL = a.length();   
-  int bL = b.length();   
+  a = a.toLowerCase();  
+  b = b.toLowerCase();  
+  
+// storing length as aL for ease      
+  int aL = a.length();     
+  int bL = b.length();     
 // if a substring of A that starts in the middle or 0 and ends at the end equals B, return true.    
-// Math.max is used in case B.length is longer than A.length and it goes into the negatives
+// Math.max is used in case B.length is longer than A.length and it goes into the negatives        
+
   if(a.substring(Math.max(0, aL-bL), aL).equals(b)){   
     return true;   
   }       
