@@ -67,4 +67,29 @@ String-2 > bobThere
 }  
 
 
+String-2 > xyBalance
+
+public boolean xyBalance(String str) {
+  //early return for empty string.
+ if(str.length()<1){
+   return true;
+ }
+  for(int i=str.length()-1;i>=0;i--){
+    char currentChar = str.charAt(i);
+    //last char is X, therefore it's not balanced
+    if(currentChar == 'x'){
+      return false;
+    } 
+    //last char is Y, therefore it is balanced, regardless of other characters
+    else if(currentChar == 'y'){
+      return true;
+    } 
+    else {
+      continue;
+    }
+   }
+  return true;
+}
+
+
 
