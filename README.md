@@ -2,42 +2,45 @@
 
 String-2 > endOther
 public boolean endOther(String a, String b) {
+//normalize   
   a = a.toLowerCase();
   b = b.toLowerCase();
-  
-  int aL = a.length();
-  int bL = b.length();
-  
-  if(a.substring(Math.max(0, aL-bL), aL).equals(b)){
+// storing length as aL for ease    
+  int aL = a.length();   
+  int bL = b.length();   
+// if a substring of A that starts in the middle or 0 and ends at the end equals B, return true.    
+// Math.max is used in case B.length is longer than A.length and it goes into the negatives
+  if(a.substring(Math.max(0, aL-bL), aL).equals(b)){   
+    return true;   
+  }       
+//same as above   
+  if(b.substring(Math.max(0,bL-aL), bL).equals(a)){   
     return true;
-  }
-  if(b.substring(Math.max(0,bL-aL), bL).equals(a)){
-    return true;
-  }
+  }   
   return false;
 }  
-
-String-2 > xyzThere
-public boolean xyzThere(String str) {
-  if(str.length()<4){
-    return str.equals("xyz");
-    }
-  for(int i=0; i<str.length()-2; i++){
-    if(str.substring(i, i+3).equals("xyz")){
-      if(i==0){
-        return true;
-      }
-      else {
-      if(!(str.substring(i-1,i).equals("."))){
-        return true;
-      } else {
+  
+String-2 > xyzThere   
+public boolean xyzThere(String str) {  
+  if(str.length()<4){  
+    return str.equals("xyz");  
+    }  
+  for(int i=0; i<str.length()-2; i++){  
+    if(str.substring(i, i+3).equals("xyz")){  
+      if(i==0){  
+        return true;  
+      }  
+      else {  
+      if(!(str.substring(i-1,i).equals("."))){  
+        return true;  
+      } else {  
         continue;
-      }
-    }
-  }
-  }
+      }  
+    }  
+  }  
+  }  
   return false;
- }
+ }  
 
 
 String-2 > bobThere
