@@ -146,3 +146,37 @@ public String repeatEnd(String str, int n) {
   }
   return result;
 }
+
+/* Given two strings, word and a separator sep, return a big string made of count occurrences of the word, separated by the separator string. */
+public String repeatSeparator(String word, String sep, int count) {
+  String result = "";
+  if(count <1){
+    return "";
+  } 
+  if(count==1){
+    return word;
+  }
+  for(int i=0; i<count; i++){
+    if(i>0){
+      result+=sep;
+    }
+    result+=word;
+  }
+  return result;
+}
+
+//Given a string, consider the prefix string made of the first N chars of the string. Does that prefix string appear somewhere else in the string? 
+//Assume that the string is not empty and that N is in the range 1..str.length().
+//String-2 Prefix Again
+public boolean prefixAgain(String str, int n) {
+  String prefix = str.substring(0, n);
+  for(int i = (0+n); i<=str.length()-n; i++){
+    if(str.substring(i,i+n).equals(prefix)){
+      return true;
+    }
+  }
+  return false;
+}
+
+
+
