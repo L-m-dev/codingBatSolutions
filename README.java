@@ -263,4 +263,27 @@ public String swap(String str, int start){
   return result;
 }
 
+//Look for patterns like "zip" and "zap" in the string -- length-3, starting with 'z' and ending with 'p'. Return a string where for all such words, the middle letter is gone, so "zipXzap" yields "zpXzp".
+//too many hardbound values, but works.
+public String zipZap(String str) {
+  String result = "";
+  int counter = 0;
+
+  while(counter<str.length()){
+    //looks for index starting at counter, preventing that an index from the start is received when we are already at the end.
+    int zInd = str.indexOf('z', counter);
+    //prevent adjacent 'p' 
+    int pInd = str.indexOf('p', counter+2);  
+    
+    if(zInd == counter && pInd == (counter+2)){
+      result += str.substring(counter, counter+1);
+      result += str.substring(counter+2, counter+3);
+      counter+=3;
+    } else {
+      result += str.substring(counter, counter+1);
+      counter++;
+    }
+  }
+  return result;
+}
 
