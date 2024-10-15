@@ -192,6 +192,7 @@ public String getSandwich(String str) {
   int secondBreadStartIndex = -1;
 
   //decided this style instead of substring
+//ACTUALLY, INDEXOF CAN BE USED FOR STRINGS, NOT JUST CHARS
   for(int i=0; i<str.length()-4;i++){
     if(str.charAt(i) == 'b'){
       if(str.charAt(i+1) == 'r'){
