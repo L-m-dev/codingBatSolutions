@@ -178,5 +178,47 @@ public boolean prefixAgain(String str, int n) {
   return false;
 }
 
+// A sandwich is two pieces of bread with something in between. Return the string that is between the first and last appearance of "bread" in the given string, or return the empty string ""
+//if there are not two pieces of bread.
+
+
+public String getSandwich(String str) {
+  if(str.length()<5){
+    return "";
+   }
+  String result = "";
+  int breadCount = 0;
+  int firstBreadEndIndex = -1;
+  int secondBreadStartIndex = -1;
+
+  //decided this style instead of substring
+  for(int i=0; i<str.length()-4;i++){
+    if(str.charAt(i) == 'b'){
+      if(str.charAt(i+1) == 'r'){
+        if(str.charAt(i+2) == 'e'){
+          if(str.charAt(i+3) == 'a'){
+            if(str.charAt(i+4) == 'd'){
+              //increment bread count;
+              breadCount++;
+              //if the first bread ending index wasn't set, set it
+              if(firstBreadEndIndex<0){
+              firstBreadEndIndex = i+5;
+              }
+              //the first bread ending index was set, so if there is another bread, its starting index will be set.
+              else {
+                secondBreadStartIndex = i;
+              }
+            }
+          }
+        }
+      }
+    }    
+  }
+  if(breadCount<2){
+    return "";
+  }
+  result = str.substring(firstBreadEndIndex, secondBreadStartIndex);
+  return result;
+}
 
 
