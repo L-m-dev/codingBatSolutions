@@ -175,7 +175,6 @@ public boolean isEverywhere(int[] nums, int val) {
   return true;
 }
 
-
 //Given an array of ints, return true if the array contains a 2 next to a 2 or a 4 next to a 4, but not both.
 
 public boolean either24(int[] nums) {
@@ -193,7 +192,101 @@ public boolean either24(int[] nums) {
 return foundPair;
 }
 
+//Given arrays nums1 and nums2 of the same length, for every element in nums1, consider the corresponding element in nums2 (at the same index). 
+//Return the count of the number of times that the two elements differ by 2 or less, but are not equal.
+public int matchUp(int[] nums1, int[] nums2) {
+  int count = 0;
+  for(int i=0;i<nums1.length;i++){
+    if(Math.abs(nums1[i]-nums2[i]) > 0 && Math.abs(nums1[i]-nums2[i])<3){
+      count++;
+    }
+  }
+  return count;
+}
 
+//Given an array of ints, return true if the array contains two 7's next to each other, or there are two 7's separated by one element, such as with {7, 1, 7}.
 
+public boolean has77(int[] nums) {
+  for(int i=0; i<nums.length-1; i++){
+    if(nums[i]==7){
+      if(nums[i+1]==7){
+        return true;
+      }
+      else if (nums.length-i>2 && nums[i+2]==7){
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+//Given an array of ints, return true if there is a 1 in the array with a 2 somewhere later in the array.
+
+public boolean has12(int[] nums) {
+  int onePos = -1;
+  boolean hasFlag = false;
+  for(int i=0;i<nums.length;i++){
+    if(nums[i]==1){
+      onePos = i;
+    }
+    else if(nums[i]==2 && onePos>=0 && i>onePos){
+      hasFlag = true;
+      break;
+    }
+  }
+  return hasFlag;
+}
+//Given an array of ints, return true if the array contains either 3 even or 3 odd values all next to each other.
+
+public boolean modThree(int[] nums) {
+  boolean modThree = false;
+  for(int i=0; i<nums.length-2;i++){
+    if(nums[i]%2==0 && nums[i+1]%2==0 && nums[i+2]%2==0){
+      modThree = true;
+      break;
+    } 
+    else if (nums[i]%2!=0 && nums[i+1]%2!=0 && nums[i+2]%2!=0){
+      modThree = true;
+      break;
+    }
+  }
+  return modThree;
+}
+
+//Given an array of ints, return true if the value 3 appears in the array exactly 3 times, and no 3's are next to each other.
+
+public boolean haveThree(int[] nums) {
+  int threeCount = 0;
+  boolean collision = false;
+  for(int i=0;i<nums.length-1;i++){
+    if(i==nums.length-2){
+      if(nums[i+1]==3){
+        threeCount++;
+      }
+    }
+    if(nums[i]==3){
+      threeCount++;
+    }
+    if(nums[i] == 3 && nums[i+1] == 3){
+      collision = true;
+      break;
+    }
+  }
+  return (threeCount==3 && !collision);
+}
+
+//logic for checking neighbors.
+public boolean twoTwo(int[] nums) {
+  for(int i=0;i<nums.length;i++){
+    if(nums[i]==2){
+    boolean hasLeftNeighbor = (i>0 && nums[i-1]==2);
+    boolean hasRightNeighbor = (i<nums.length-1 && nums[i+1]==2);
+    if(!hasLeftNeighbor && !hasRightNeighbor){
+      return false;
+    }
+    }
+  }
+  return true;
+}
 
 
