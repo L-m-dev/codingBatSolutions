@@ -289,4 +289,190 @@ public boolean twoTwo(int[] nums) {
   return true;
 }
 
+//Return true if the group of N numbers at the start and end of the array are the same. 
+  //For example, with {5, 6, 45, 99, 13, 5, 6}, the ends are the same for n=0 and n=2, and false for n=1 and n=3. 
+  //You may assume that n is in the range 0..nums.length inclusive.
 
+public boolean sameEnds(int[] nums, int len) {
+  if(len==0){
+    return true;
+  }
+  int[] startGroup = new int[len];
+  int[] endGroup = new int[len];
+  
+  int arrayCounter = 0;
+  for(int i=0;i<len;i++){
+    startGroup[arrayCounter] = nums[i];
+    arrayCounter++;
+  }
+  arrayCounter = 0;
+  for(int i=(nums.length-len);i<nums.length;i++){
+    endGroup[arrayCounter] = nums[i];
+    arrayCounter++;
+  }
+  
+  for(int i=0; i<len; i++){
+  if(!(startGroup[i]==endGroup[i])){
+    return false;
+  }    
+  else
+  {
+    return true;
+  }
+  }
+  return false;
+}
+
+//Return true if the array contains, somewhere, three increasing adjacent numbers like .... 4, 5, 6, ... or 23, 24, 25.
+public boolean tripleUp(int[] nums) {
+  for(int i=0;i<nums.length-2;i++){
+      int n = nums[i];
+      if(nums[i+1]==n+1 && nums[i+2]==n+2){
+        return true;
+    } 
+  }
+  return false;
+}
+
+//Given start and end numbers, return a new array containing the sequence of integers from start up to but not 
+//including end, so start=5 and end=10 yields {5, 6, 7, 8, 9}. 
+//The end number will be greater or equal to the start number. Note that a length-0 array is valid. (See also: FizzBuzz Code)
+
+
+public int[] fizzArray3(int start, int end) {
+  if(start>end){
+    return new int[0];
+  }
+  int[] resultArray = new int[end-start];
+  int counter = start;
+  for(int i=0; i<resultArray.length;i++){
+    resultArray[i] = counter++;
+  }
+  return resultArray;
+}
+
+
+//Return an array that is "left shifted" by one -- so {6, 2, 5, 3} returns {2, 5, 3, 6}. You may modify and return the given array, or return a new array.
+  
+public int[] shiftLeft(int[] nums) {
+  int[] shiftedArray = new int[nums.length];
+  for(int i=nums.length-1;i>=0;i--){
+    if(i==nums.length-1){
+      shiftedArray[i] = nums[0];
+    } else{
+    shiftedArray[i] = nums[i+1];
+    }
+  }
+  return shiftedArray;
+}
+
+/* this is not a good solution though... shifts can be in place*/
+
+//THIS IS A SHIFT IN PLACE, save the first element, shift every other
+
+public int[] shiftLeft(int[] nums) {
+  if(nums.length<=0){
+    return nums;
+  }
+   int aux = nums[0];
+   for(int i=0; i<nums.length;i++){
+     if(i==nums.length-1){
+       nums[i] = aux;
+     } else{
+     nums[i]=nums[i+1];
+     }
+   }
+  return nums;   
+ }
+ 
+//For each multiple of 10 in the given array, change all the values following it to be that multiple of 10, until encountering another multiple of 10. 
+//So {2, 10, 3, 4, 20, 5} yields {2, 10, 10, 10, 20, 20}.
+
+public int[] tenRun(int[] nums) {
+  Integer currentNum = null;
+  for(int i=0;i<nums.length;i++){
+    if(nums[i]%10==0){
+      currentNum = nums[i];
+      continue;
+    } 
+    if(currentNum != null){
+      nums[i] = currentNum;
+    }
+  }
+  return nums;
+}
+
+// Given a non-empty array of ints, return a new array containing the elements from the original array that come before the first 4 in the original array. 
+//The original array will contain at least one 4. Note that it is valid in java to create an array of length 0.
+
+
+public int[] pre4(int[] nums) {
+  if(nums.length==0){
+     return new int[0];
+  }
+  int fourIndex = -1;
+  for(int i=0; i<nums.length;i++){
+    if(nums[i]==4){
+      fourIndex = i;
+    }
+    if(fourIndex>-1){
+      int[] resultArray = new int[fourIndex];
+      for(int j=0; j<resultArray.length;j++){
+        resultArray[j] = nums[j];
+      }
+     return resultArray;
+    }
+  }
+  return new int[0];
+}
+
+//Given a non-empty array of ints, return a new array containing the elements from the original array that come after the last 4 in the original array.
+//The original array will contain at least one 4. Note that it is valid in java to create an array of length 0.
+
+public int[] post4(int[] nums) {
+  if(nums.length==0){
+    return new int[0];
+  }
+  int fourIndex = -1;
+  for(int i=nums.length-1;i>=0;i--){
+    if(nums[i]==4){
+      fourIndex = i;
+      break;
+    }
+  }
+  if(fourIndex == -1 || fourIndex == nums.length-1){
+    return new int[0];
+  }
+  int[] resultArray = new int[nums.length-fourIndex-1];
+  
+  for(int i=0;i<resultArray.length;i++){
+    resultArray[i] = nums[fourIndex+1+i];
+  }
+  return resultArray;
+}
+
+//We'll say that an element in an array is "alone" if there are values before and after it, and those values are different from it.
+//Return a version of the given array where every instance of the given value which is alone is replaced by whichever value to its left or right is larger.
+
+
+public int[] notAlone(int[] nums, int val) {
+  if(nums.length<3){
+    return nums;
+  }
+  for(int i=0;i<nums.length;i++){
+ 
+    if(nums[i]==val){
+      if(i>0 && i<nums.length-1 &&
+      (nums[i-1] != val && nums[i+1] !=val)){
+        if(nums[i-1]>nums[i+1]){
+          nums[i] = nums[i-1];
+        } else if(nums[i-1]<nums[i+1]){
+          nums[i] = nums[i+1];
+        } else {
+          continue;
+        }
+      }
+    } 
+  }
+  return nums;
+}
