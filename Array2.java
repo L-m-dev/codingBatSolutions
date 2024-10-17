@@ -476,3 +476,109 @@ public int[] notAlone(int[] nums, int val) {
   }
   return nums;
 }
+
+/*Return an array that contains the exact same numbers as the given array, but rearranged so that all the zeros are grouped at the start of the array.
+The order of the non-zero numbers does not matter. So {1, 0, 0, 1} becomes {0 ,0, 1, 1}. You may modify and return the given array or make a new array.
+  */
+public int[] zeroFront(int[] nums) {
+  if(nums.length<2){
+    return nums;
+  }
+  //track last index of zero...
+  int indexPlaceZero = 0;
+  for(int i=0;i<nums.length;i++){
+    if(nums[i]==0){
+      int aux = nums[indexPlaceZero];
+      nums[indexPlaceZero] = nums[i];
+      nums[i] = aux;
+      indexPlaceZero++;
+    }
+  }
+  return nums;
+}
+
+   //Return a version of the given array where all the 10's have been removed. 
+  //The remaining elements should shift left towards the start of the array as needed, and the empty spaces a the end of the array should be 0. 
+  //So {1, 10, 10, 2} yields {1, 2, 0, 0}. You may modify and return the given array or make a new array.
+
+public int[] withoutTen(int[] nums) {
+  int insertIndex=0;
+  //insert the things that aren't 10
+  for(int i=0; i<nums.length;i++){
+   if(nums[i]!=10){
+     nums[insertIndex] = nums[i];
+     insertIndex++;
+   } 
+  }
+  //then fill the rest, starting by the last index of valid number.
+  for(int i=insertIndex;i<nums.length;i++){
+    nums[i]=0;
+  }
+  return nums;
+}
+
+//Return a version of the given array where each zero value in the array is replaced by the largest odd value to the right of 
+  //the zero in the array. If there is no odd value to the right of the zero, leave the zero as a zero.
+
+public int[] zeroMax(int[] nums) {
+  for(int i=0;i<nums.length;i++){
+    if(nums[i]==0){
+      int max = 0;
+      for(int j=i+1;j<nums.length;j++){
+        if(nums[j]%2!=0 && nums[j]>max){
+          max=nums[j];
+          }
+      }
+      nums[i]=max;
+    }
+  }
+  return nums;
+}
+
+//inefficient but works.....
+
+public int[] evenOdd(int[] nums) {
+  int oddIndex = nums.length-1;
+  int evenIndex = 0;
+  int aux = 0;
+  int c=0;
+  while(c<2){
+  for(int i=0; i<nums.length;i++){
+    if(nums[i]%2==0 && i>evenIndex){
+    aux = nums[evenIndex];
+    nums[evenIndex] = nums[i];
+    nums[i] = aux;
+    evenIndex++;
+    } 
+    if(nums[i]%2!=0 && i<oddIndex){
+    aux = nums[oddIndex];
+    nums[oddIndex] = nums[i];
+    nums[i] = aux;
+    oddIndex--;
+    }
+  }
+  c++;
+  }
+  return nums;
+}
+
+
+public String[] fizzBuzz(int start, int end) {
+  String[] resArray = new String[end-start];
+  int currentIndex=0;
+  for(int i=start;i<end;i++){
+    if(i%3==0 && i%5==0){
+      resArray[currentIndex++]= "FizzBuzz";
+    } 
+    else if(i%3==0){
+      resArray[currentIndex++]="Fizz";
+    }else if(i%5==0){
+      resArray[currentIndex++]="Buzz";
+    }
+    else{
+      resArray[currentIndex++] = String.valueOf(i);
+    }
+    }
+  return resArray;
+}
+
