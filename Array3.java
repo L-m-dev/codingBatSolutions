@@ -49,7 +49,7 @@ public int[] seriesUp(int n) {
       nArray[summation+j-1]=j;
     }  
   }
-  return nA;
+  return nArray;
 }
 
 
