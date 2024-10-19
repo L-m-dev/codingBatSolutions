@@ -162,6 +162,55 @@ public int sumNumbers(String str) {
 
 
 
+//this solution is too much iterative though. there are better solutions online;
+public String notReplace(String str) {
+  if(str.length()<2){
+    return "";
+  }
+  if(str.length()==2 && str.equals("is")){
+    return "is not";
+  }
+  String result = "";
+  for(int i=0; i<str.length()-1; i++){
+    //startBlock
+    if(i==0){
+    if(str.substring(i,i+2).equals("is") && !Character.isLetter(str.charAt(i+2))){
+      result+="is not";
+      i++;
+      continue;
+    } 
+    else{
+      result+= str.substring(i,i+1);
+    }
+    }
+    //endBlock
+    if(i>0 && i<=str.length()-3){
+      if(str.substring(i,i+2).equals("is") && 
+      !Character.isLetter(str.charAt(i-1)) &&
+      !Character.isLetter(str.charAt(i+2))){
+      result+="is not";
+      i++;
+      continue;
+      } 
+      else{
+        result+= str.substring(i,i+1);
+      }
+  }
+    if(i==str.length()-2){
+      if(str.substring(i,i+2).equals("is") && 
+      !Character.isLetter(str.charAt(i-1))){
+      result+="is not";
+      i++;
+      continue;
+      } 
+      else{
+        result+= str.substring(i,i+2);
+      }
+  }
+  
+  }
+  return result;
+}
 
 
 
