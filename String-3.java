@@ -138,12 +138,14 @@ return biggestLength;
 
 
 public int sumNumbers(String str) {
+  
   ArrayList<Integer> numList = new ArrayList<>();
   String currentNumber = "";
   
   for(int i=0; i<str.length(); i++){ 
     if(Character.isDigit(str.charAt(i))){
       currentNumber += str.charAt(i);
+      //if this is the last index or there is no neighbor number, parse what has been built (Ex. 151), add to the list and reset the currentNumber builder.
       if(i == str.length() -1 || 
       (i<str.length()-1 && !Character.isDigit(str.charAt(i+1)))){
         numList.add(Integer.parseInt(currentNumber));
