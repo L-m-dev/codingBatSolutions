@@ -87,10 +87,76 @@ public String sameEnds(String string) {
  return fin;
 }
 
+public String mirrorEnds(String string) {
+  if(string.length()==0){
+    return "";
+  }
+  String result = "";
+  int len = string.length();
+  int endIndex = len-1;
+  
+  for(int i=0; i<len; i++){
+    if(string.charAt(i) == string.charAt(endIndex)){
+      result += string.charAt(i);
+      endIndex--;
+    } else {
+      break;
+    }
+  }
+  return result;
+}
 
 
+public int maxBlock(String str) {
+  if(str.length()==0){
+    return 0;
+  }
+  
+  int biggestLength = 0; 
+  int currentLength = 0;
+  char currentChar; 
+  
+  for(int i=0; i<str.length(); i++){
+  currentChar = str.charAt(i);
+  currentLength = 0;
+  
+  for(int j=i; j<str.length(); j++){
+    if(str.charAt(j) == currentChar){
+      currentLength++;
+      if(currentLength>biggestLength){
+        biggestLength = currentLength;
+      }
+    }
+    else {
+      currentLength = 0;
+      break;
+    }
+  }
+}
+return biggestLength;
+}
 
 
+public int sumNumbers(String str) {
+  ArrayList<Integer> numList = new ArrayList<>();
+  String currentNumber = "";
+  
+  for(int i=0; i<str.length(); i++){ 
+    if(Character.isDigit(str.charAt(i))){
+      currentNumber += str.charAt(i);
+      if(i == str.length() -1 || 
+      (i<str.length()-1 && !Character.isDigit(str.charAt(i+1)))){
+        numList.add(Integer.parseInt(currentNumber));
+        currentNumber = "";
+       }
+    }
+  }
+  int sum = 0;
+  for(int num:numList){
+  sum+=num;
+  }
+  return sum;
+}
 
 
 
