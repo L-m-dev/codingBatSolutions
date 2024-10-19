@@ -29,3 +29,27 @@ public int countClumps(int[] nums) {
   }
   return clumpCount;
 }
+
+//Given n>=0, create an array with the pattern {1,    1, 2,    1, 2, 3,   ... 1, 2, 3 .. n} (spaces added to show the grouping). 
+//Note that the length of the array will be 1 + 2 + 3 ... + n, which is known to sum to exactly n*(n + 1)/2.
+// SERIES UP
+public int[] seriesUp(int n) {
+  //the idea is to increment by the summation.
+  int length = n*(n+1)/2;
+  //length of 3 = 6.
+  
+  int[] nArray = new int[length];
+   
+  //the index overlaps if using [i+j-1], instead should add the current summation to the index;
+  for(int i=0; i<n; i++){
+    
+    for(int j=1; j<=i+1;j++){
+      int summation = i*(i+1)/2;
+      //-1 adjusts the index.
+      nArray[summation+j-1]=j;
+    }  
+  }
+  return nA;
+}
+
+
