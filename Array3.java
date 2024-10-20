@@ -134,3 +134,21 @@ public boolean linearIn(int[] outer, int[] inner) {
   }
   return contained;
 }
+
+//invert
+//my solution for squareUp, although the last part was more of try and error.
+public int[] squareUp(int n) {
+  int[] nA = new int[n*n];
+  int k = nA.length-1;
+  for(int i=0; i<n; i++){
+    for(int j=n-1; j>=0; j--){
+      if(i>j){
+      nA[k--] = 0;
+      } else {
+      nA[k--] = (n-j);
+      }
+    }
+  }
+  return nA;
+}
+
