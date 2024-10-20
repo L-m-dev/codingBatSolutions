@@ -122,7 +122,7 @@ public boolean linearIn(int[] outer, int[] inner) {
         contained = true;
         break;
       } 
-      if(j==outer.length-1 && outer[j]!=currentNumber){
+      if((j==outer.length-1 && outer[j]!=currentNumber) || outer[j]>currentNumber){
         contained = false;
         break;
       }  
@@ -133,4 +133,3 @@ public boolean linearIn(int[] outer, int[] inner) {
   }
   return contained;
 }
-
