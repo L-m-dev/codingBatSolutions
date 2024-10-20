@@ -106,6 +106,7 @@ public int[] fix45(int[] nums) {
 //Given two arrays of ints sorted in increasing order, outer and inner, return true if all of the numbers in inner appear in outer. 
 //The best solution makes only a single "linear" pass of both arrays, taking advantage of the fact that both arrays are already in sorted order.
 
+//better solution is using HashSet
 
 public boolean linearIn(int[] outer, int[] inner) {
   //I believe the empty element is contained?
