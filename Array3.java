@@ -52,4 +52,20 @@ public int[] seriesUp(int n) {
   return nArray;
 }
 
+public int maxSpan(int[] nums) {
+  int maxSpan = 0;
+  for(int i=0; i<nums.length; i++){
+    int cN = nums[i];
+    int span = 1;
+    for(int j=i; j<nums.length; j++){
+      if(nums[j]==cN && j!=i){
+        span = 1 + (nums.length-i)-(nums.length-j);
+      }
+      if(span>maxSpan){
+        maxSpan = span;
+      }
+    }
+  }
+return maxSpan;
+}
 
