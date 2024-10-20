@@ -102,3 +102,35 @@ public int[] fix45(int[] nums) {
 }
 
 
+//my solution, there are better ones. 
+//Given two arrays of ints sorted in increasing order, outer and inner, return true if all of the numbers in inner appear in outer. 
+//The best solution makes only a single "linear" pass of both arrays, taking advantage of the fact that both arrays are already in sorted order.
+
+
+public boolean linearIn(int[] outer, int[] inner) {
+  //I believe the empty element is contained?
+  if(inner.length==0){
+    return true;
+  }
+  
+  boolean contained = false;
+  
+  for(int i=0; i<inner.length; i++){
+    int currentNumber = inner[i];
+    for(int j=0; j<outer.length; j++){
+      if(outer[j]==currentNumber){
+        contained = true;
+        break;
+      } 
+      if(j==outer.length-1 && outer[j]!=currentNumber){
+        contained = false;
+        break;
+      }  
+    }
+    if(!contained){
+      break;
+    }
+  }
+  return contained;
+}
+
