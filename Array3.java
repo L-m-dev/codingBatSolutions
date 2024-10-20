@@ -69,3 +69,36 @@ public int maxSpan(int[] nums) {
 return maxSpan;
 }
 
+public int[] fix34(int[] nums) {
+  
+  for(int i=0; i<nums.length-1; i++){
+    if(nums[i]==3 && nums[i+1]!=4){
+    for(int j=0; j<nums.length; j++){
+      //bug, it's unbalancing numbers that are already balanced, fix checking that.
+      //but here the 4s are never in the start, different than the following exercise
+      if(nums[j]==4 && (j>0 && nums[j-1]!=3)){
+        nums[j]=nums[i+1];
+        nums[i+1]=4;
+      }
+    }
+    }
+  }
+  return nums;
+}
+public int[] fix45(int[] nums) {
+
+  for(int i=0; i<nums.length-1; i++){
+    if(nums[i]==4 && nums[i+1]!=5){
+    for(int j=0; j<nums.length; j++){
+      //either it's at j==0 or at j>1 and the first is not a 4
+       if(nums[j]==5 && (j==0 || (j>0 && nums[j-1]!=4))){
+        nums[j]=nums[i+1];
+        nums[i+1]=5;
+      } 
+    }
+    }
+  }
+  return nums;
+}
+
+
