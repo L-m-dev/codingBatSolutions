@@ -152,3 +152,27 @@ public int[] squareUp(int n) {
   return nA;
 }
 
+//Given a non-empty array, return true if there is a place to split the array so that the sum of the numbers on 
+//one side is equal to the sum of the numbers on the other side.
+
+public boolean canBalance(int[] nums) {
+  //i is the boundary.
+  for(int i=0; i<nums.length; i++){
+    int sumL = sum(nums, 0, i);
+    int sumR = sum(nums, i+1, nums.length-1);
+    if(sumL==sumR){
+      return true;
+    }
+  }
+  return false;
+}
+//helper method
+public int sum(int[] nums, int start, int end){
+  int sum = 0;
+  for(int i = start; i<=end; i++){
+    sum+=nums[i];
+  }
+  return sum;
+}
+
+ 
