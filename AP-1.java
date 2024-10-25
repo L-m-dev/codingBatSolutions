@@ -105,8 +105,43 @@ public int[] copyEvens(int[] nums, int count) {
   return nA;
 }
 
+public int[] copyEndy(int[] nums, int count) {
+  int[] nA = new int[count];
+  Queue<Integer> numQueue   = new LinkedList();
+  for(int n:nums){
+    if(isEndy(n)){
+      numQueue.add(n);
+    }
+  }
+  for(int i=0; i<count; i++){
+    nA[i] = numQueue.poll();
+  }
+  return nA;
+}
 
+boolean isEndy(int num){
+  if((num>=0 && num<=10) || (num>=90 && num<=100)){
+    return true;
+  }
+  return false;
+} 
 
+public int matchUp(String[] a, String[] b) {
+
+  int maxLength = Math.max(a.length, b.length);
+  int len = (a.length+b.length) -maxLength;
+  int countNonEmptySameChar = 0;
+  
+  for(int i=0; i<maxLength; i++){
+  if(a[i].equals("") || b[i].equals("")){
+    continue;
+  }
+  if(a[i].charAt(0) == b[i].charAt(0)){
+    countNonEmptySameChar++;
+  }
+  }
+  return countNonEmptySameChar;
+}
 
 
 
