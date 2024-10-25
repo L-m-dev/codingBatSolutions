@@ -32,8 +32,78 @@ public boolean scoresClump(int[] scores) {
   return false;
 }
 
+public int scoresAverage(int[] scores) {
+  int middle = scores.length/2;
+  int firstHalfAverage = average(scores, 0, middle);
+  int secondHalfAverage = average(scores, middle, scores.length);
+  
+  return Math.max(firstHalfAverage, secondHalfAverage);
+}
 
+int average(int[] scores, int start, int end){
+  int sum = 0 ;
+  int count = 0;
+  for(int i=start; i<end; i++){
+    sum+= scores[i];
+    count++;
+  }
+  
+  return sum/count;
+}
 
+public int wordsCount(String[] words, int len) {
+  int count = 0;
+  for(int i=0; i<words.length; i++){
+    if(words[i].length() == len){
+      count++;
+    }
+  }
+  return count;
+}
+
+public String[] wordsFront(String[] words, int n) {
+  String[] res = new String[n];
+  for(int i=0; i<n; i++){
+    res[i] = words[i];
+   }
+return res;
+}
+
+public List wordsWithoutList(String[] words, int len) {
+  ArrayList<String> list = new ArrayList<>();
+  for(String word:words){
+    if(word.length() != len){
+      list.add(word);
+    }
+  }
+  return list;
+}
+
+public boolean hasOne(int n) {
+  while(n>0){
+    int digit = n%10;
+    if(digit==1){
+      return true;
+    }
+    n = n/10;
+  }
+  return false;
+}
+
+public int[] copyEvens(int[] nums, int count) {
+  int[] nA = new int[count];
+  int counter = 0;
+  for(int i=0; i<nums.length; i++){
+    if(nums[i]%2==0){
+      nA[counter]=nums[i];
+      counter++;
+      if(counter == count){
+        break;
+      }
+    }
+  }
+  return nA;
+}
 
 
 
