@@ -144,6 +144,53 @@ public int matchUp(String[] a, String[] b) {
 }
 
 
+public int sumHeights(int[] heights, int start, int end) {
+  int sum = 0;
+  for(int i=start; i<end; i++){
+    sum += Math.abs(heights[i]-heights[i+1]);
+  }
+  return sum;
+}
 
+public int sumHeights2(int[] heights, int start, int end) {
+  int sum = 0;
+  for(int i=start; i<end; i++){
+    if(heights[i]<heights[i+1]){
+    sum += Math.abs(2*(heights[i]-heights[i+1]));
+    } else{
+    sum += Math.abs(heights[i]-heights[i+1]);
+    }
+  }
+  return sum;
+}
+
+public int bigHeights(int[] heights, int start, int end) {
+  int bigSteps = 0;
+  for(int i=start; i<end; i++){
+    if(Math.abs(heights[i]-heights[i+1]) >= 5){
+      bigSteps++;
+    }
+  }
+  return bigSteps;
+}
+
+public int userCompare(String aName, int aId, String bName, int bId) {
+  
+  if(aName.compareTo(bName)<0){
+    return -1;
+  } 
+  else if(aName.compareTo(bName)>0){
+    return 1;
+  } 
+  if(aId < bId){
+    return -1;
+  } 
+  else if(aId > bId){
+    return 1;
+  }
+  else {
+    return 0;
+  }
+}
 
 
